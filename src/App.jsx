@@ -335,21 +335,35 @@ export default function App() {
             </div>
           </div>
           
-          <div className="potions-list">
-            {calculatePotions.map((potion, index) => (
-              <div key={index} className="potion-item">
-                <div className="potion-ingredients">
-                  {potion.ingredients.map(ing => ing.name).join(' + ')}
-                </div>
-                <div className="potion-effects">
-                  Effects: {potion.effects.join(', ')}
-                </div>
-                <div className="potion-stats">
-                  <span>Duration: {potion.duration}s</span>
-                  <span>Value: {potion.value} gold</span>
-                </div>
-              </div>
-            ))}
+          <div className="potions-table-container">
+            <table className="potions-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Value</th>
+                  <th>Ingredients</th>
+                  <th>Effects</th>
+                </tr>
+              </thead>
+              <tbody>
+                {calculatePotions.map((potion, index) => (
+                  <tr key={index}>
+                    <td className="potion-name">
+                      Potion #{index + 1}
+                    </td>
+                    <td className="potion-value">
+                      {potion.value} gold
+                    </td>
+                    <td className="potion-ingredients">
+                      {potion.ingredients.map(ing => ing.name).join(' + ')}
+                    </td>
+                    <td className="potion-effects">
+                      {potion.effects.join(', ')}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
