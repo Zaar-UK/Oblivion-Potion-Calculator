@@ -148,7 +148,7 @@ section h2 {
 .equipment-select:focus {
   outline: none;
   background-color: #000000;
-  color: #ffffff;
+  color: #000000;
 }
 
 .equipment-select:hover {
@@ -211,7 +211,7 @@ section h2 {
 .sort-select:focus {
   outline: none;
   background-color: #000000;
-  color: #ffffff;
+  color: #000000;
 }
 
 .sort-order {

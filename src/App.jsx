@@ -260,7 +260,6 @@ export default function App() {
                 onChange={(e) => setAlchemyLevel(parseInt(e.target.value))}
               />
             </div>
-            <button onClick={clearAll} className="clear-button">Clear All</button>
           </div>
         </section>
 
