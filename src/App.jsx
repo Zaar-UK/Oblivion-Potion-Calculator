@@ -411,7 +411,10 @@ export default function App() {
       </div>
       
       <footer className="app-footer">
-        <p>&copy; 2024 Oblivion Alchemy Calculator. All rights reserved.</p>
+        <div className="app-footer-content">
+          <img src="/attached_assets/PlasmaKitten_ForWhiteBG_1749493854991.png" alt="Logo" className="app-footer-logo" />
+          <p>Built for The Elder Scrolls IV: Oblivion Remastered • Alchemy Calculator v1.0</p>
+        </div>
       </footer>
     </main>
   );
