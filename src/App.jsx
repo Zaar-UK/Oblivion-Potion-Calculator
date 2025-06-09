@@ -262,7 +262,7 @@ export default function App() {
     <main className="app">
       <header className="app-header">
         <a href="https://www.instagram.com/plasmakitty_?igsh=ejg1NDliaGRwb211" target="_blank" rel="noopener noreferrer">
-          <img src="/attached_assets/PlasmaKitten_ForWhiteBG_1749493854991.png" alt="Logo" className="app-logo" />
+          <img src="/logo.png" alt="Logo" className="app-logo" />
         </a>
         <h1 className="app-title-main">OBLIVION</h1>
         <h2 className="app-title-sub">ALCHEMY CALCULATOR</h2>
@@ -413,7 +413,7 @@ export default function App() {
       <footer className="app-footer">
         <div className="app-footer-content">
           <a href="https://www.instagram.com/plasmakitty_?igsh=ejg1NDliaGRwb211" target="_blank" rel="noopener noreferrer">
-            <img src="/attached_assets/PlasmaKitten_ForWhiteBG_1749493854991.png" alt="Logo" className="app-footer-logo" />
+            <img src="/logo.png" alt="Logo" className="app-footer-logo" />
           </a>
           <p>Built for The Elder Scrolls IV: Oblivion Remastered</p>
         </div>
