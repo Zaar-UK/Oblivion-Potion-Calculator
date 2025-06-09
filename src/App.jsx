@@ -263,7 +263,7 @@ export default function App() {
       <header className="app-header">
         <h1 className="app-title-main">OBLIVION</h1>
         <h2 className="app-title-sub">ALCHEMY CALCULATOR</h2>
-        <p>Calculate potions based on your ingredients, skill level, and equipment</p>
+        <p>Remastered Edition</p>
       </header>
 
       <div className="app-content">
