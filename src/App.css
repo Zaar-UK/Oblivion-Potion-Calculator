@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Georgia', serif;
+  font-family: 'Arial', sans-serif;
   background-color: #ffffff;
   color: #000000;
   line-height: 1.6;
@@ -162,25 +162,51 @@ section h2 {
 }
 
 .ingredient-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #000000;
   background-color: #ffffff;
-  color: #000000;
-  border: 2px solid #000000;
-  padding: 10px;
-  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  text-align: left;
-  font-family: inherit;
 }
 
 .ingredient-item:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #f8f8f8;
 }
 
-.ingredient-item.selected {
+.ingredient-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+.ingredient-checkbox:checked {
   background-color: #000000;
+}
+
+.ingredient-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ingredient-label {
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex: 1;
 }
 
 .results-header {

@@ -293,14 +293,22 @@ export default function App() {
           <h2>Ingredients ({selectedIngredients.length} selected)</h2>
           <div className="ingredients-grid">
             {INGREDIENTS.map((ingredient) => (
-              <button
+              <div
                 key={ingredient.name}
-                className={`ingredient-item ${selectedIngredients.includes(ingredient) ? 'selected' : ''}`}
+                className="ingredient-item"
                 onClick={() => toggleIngredient(ingredient)}
                 title={ingredient.effects.join(', ')}
               >
-                {ingredient.name}
-              </button>
+                <input
+                  type="checkbox"
+                  className="ingredient-checkbox"
+                  checked={selectedIngredients.includes(ingredient)}
+                  onChange={() => toggleIngredient(ingredient)}
+                />
+                <label className="ingredient-label">
+                  {ingredient.name}
+                </label>
+              </div>
             ))}
           </div>
         </section>
