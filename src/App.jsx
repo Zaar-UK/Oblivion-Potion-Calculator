@@ -369,15 +369,36 @@ export default function App() {
           <div className="potions-list">
             {calculatePotions.map((potion, index) => (
               <div key={index} className="potion-item">
-                <div className="potion-ingredients">
-                  {potion.ingredients.map(ing => ing.name).join(' + ')}
+                <div className="potion-left">
+                  <h4>Ingredients:</h4>
+                  <div className="potion-ingredients-list">
+                    {potion.ingredients.map((ingredient, idx) => (
+                      <div key={idx} className="potion-ingredient-item">
+                        <input
+                          type="checkbox"
+                          className="potion-ingredient-checkbox"
+                          checked={selectedIngredients.includes(ingredient)}
+                          onChange={() => toggleIngredient(ingredient)}
+                        />
+                        <label className="potion-ingredient-label">
+                          {ingredient.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="potion-effects">
-                  Effects: {potion.effects.join(', ')}
-                </div>
-                <div className="potion-stats">
-                  <span>Duration: {potion.duration}s</span>
-                  <span>Value: {potion.value} gold</span>
+                <div className="potion-right">
+                  <div className="potion-effects">
+                    <strong>Effects:</strong> {potion.effects.join(', ')}
+                  </div>
+                  <div className="potion-stats">
+                    <div className="potion-stat">
+                      <strong>Value:</strong> {potion.value} gold
+                    </div>
+                    <div className="potion-stat">
+                      <strong>Duration:</strong> {potion.duration}s
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

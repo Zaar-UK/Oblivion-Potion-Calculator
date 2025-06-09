@@ -306,29 +306,91 @@ section h2 {
   border: 1px solid #000000;
   padding: 15px;
   background-color: #ffffff;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 
-.potion-ingredients {
+.potion-left {
+  flex: 0 0 300px;
+  border-right: 1px solid #000000;
+  padding-right: 15px;
+}
+
+.potion-left h4 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.potion-ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.potion-ingredient-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.potion-ingredient-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+.potion-ingredient-checkbox:checked {
+  background-color: #000000;
+}
+
+.potion-ingredient-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 12px;
   font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+}
+
+.potion-ingredient-label {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.potion-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .potion-effects {
-  margin-bottom: 8px;
-  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .potion-stats {
   display: flex;
-  gap: 20px;
-  font-size: 0.9rem;
-  font-weight: bold;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.potion-stats span {
-  padding: 2px 8px;
+.potion-stat {
+  padding: 4px 8px;
   border: 1px solid #000000;
+  background-color: #f8f8f8;
+  font-size: 0.9rem;
 }
 
 /* Responsive design */
@@ -371,8 +433,20 @@ section h2 {
     justify-content: center;
   }
 
-  .potion-stats {
+  .potion-item {
     flex-direction: column;
+    gap: 15px;
+  }
+
+  .potion-left {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid #000000;
+    padding-right: 0;
+    padding-bottom: 15px;
+  }
+
+  .potion-stats {
     gap: 5px;
   }
 }
