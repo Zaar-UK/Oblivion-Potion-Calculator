@@ -473,6 +473,21 @@ section h2 {
   }
 }
 
+/* Footer styling */
+.app-footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  border-top: 2px solid #000000;
+  background-color: #ffffff;
+}
+
+.app-footer p {
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 0;
+}
+
 /* Scrollbar styling */
 .potions-list::-webkit-scrollbar {
   width: 8px;

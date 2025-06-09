@@ -409,6 +409,10 @@ export default function App() {
           </div>
         </section>
       </div>
+      
+      <footer className="app-footer">
+        <p>&copy; 2024 Oblivion Alchemy Calculator. All rights reserved.</p>
+      </footer>
     </main>
   );
 }
