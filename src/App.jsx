@@ -144,6 +144,7 @@ export default function App() {
   });
   const [sortBy, setSortBy] = useState('value');
   const [sortOrder, setSortOrder] = useState('desc');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const toggleIngredient = (ingredient) => {
     setSelectedIngredients(prev => 
@@ -214,7 +215,26 @@ export default function App() {
       }
     }
 
-    return potions.sort((a, b) => {
+    // Filter potions based on search term
+    const filteredPotions = potions.filter(potion => {
+      if (!searchTerm) return true;
+      
+      const searchLower = searchTerm.toLowerCase();
+      
+      // Search in ingredients
+      const ingredientMatch = potion.ingredients.some(ingredient => 
+        ingredient.name.toLowerCase().includes(searchLower)
+      );
+      
+      // Search in effects
+      const effectMatch = potion.effects.some(effect => 
+        effect.toLowerCase().includes(searchLower)
+      );
+      
+      return ingredientMatch || effectMatch;
+    });
+
+    return filteredPotions.sort((a, b) => {
       if (sortOrder === 'asc') {
         return sortBy === 'value' ? a.value - b.value : 
                sortBy === 'effects' ? a.effects.length - b.effects.length :
@@ -225,7 +245,7 @@ export default function App() {
                b.duration - a.duration;
       }
     });
-  }, [selectedIngredients, alchemyLevel, selectedEquipment, sortBy, sortOrder]);
+  }, [selectedIngredients, alchemyLevel, selectedEquipment, sortBy, sortOrder, searchTerm]);
 
   const clearAll = () => {
     setSelectedIngredients([]);
@@ -316,22 +336,33 @@ export default function App() {
         <section className="results-section">
           <div className="results-header">
             <h2>Craftable Potions ({calculatePotions.length})</h2>
-            <div className="sort-controls">
-              <select 
-                value={sortBy} 
-                onChange={(e) => setSortBy(e.target.value)}
-                className="sort-select"
-              >
-                <option value="value">Value</option>
-                <option value="effects">Effects</option>
-                <option value="duration">Duration</option>
-              </select>
-              <button 
-                className="sort-order"
-                onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
-              >
-                {sortOrder === 'asc' ? '↑' : '↓'}
-              </button>
+            <div className="results-controls">
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search ingredients or effects..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="search-input"
+                />
+              </div>
+              <div className="sort-controls">
+                <select 
+                  value={sortBy} 
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="sort-select"
+                >
+                  <option value="value">Value</option>
+                  <option value="effects">Effects</option>
+                  <option value="duration">Duration</option>
+                </select>
+                <button 
+                  className="sort-order"
+                  onClick={() => setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc')}
+                >
+                  {sortOrder === 'asc' ? '↑' : '↓'}
+                </button>
+              </div>
             </div>
           </div>
           
