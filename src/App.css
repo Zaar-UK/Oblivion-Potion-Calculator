@@ -117,14 +117,50 @@ section h2 {
   color: #000000;
 }
 
-.equipment-grid,
+.equipment-dropdowns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.equipment-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.equipment-dropdown label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.equipment-select {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.equipment-select:focus {
+  outline: none;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.equipment-select:hover {
+  background-color: #f8f8f8;
+}
+
 .ingredients-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
 }
 
-.equipment-item,
 .ingredient-item {
   background-color: #ffffff;
   color: #000000;
@@ -137,13 +173,11 @@ section h2 {
   font-family: inherit;
 }
 
-.equipment-item:hover,
 .ingredient-item:hover {
   background-color: #000000;
   color: #ffffff;
 }
 
-.equipment-item.selected,
 .ingredient-item.selected {
   background-color: #000000;
   color: #ffffff;
@@ -248,7 +282,10 @@ section h2 {
     font-size: 2rem;
   }
 
-  .equipment-grid,
+  .equipment-dropdowns {
+    grid-template-columns: 1fr;
+  }
+
   .ingredients-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }

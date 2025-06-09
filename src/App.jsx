@@ -98,33 +98,50 @@ const INGREDIENTS = [
   { name: "Wormwood Leaves", effects: ["Damage Magicka", "Invisibility", "Fortify Fatigue", "Damage Health"] }
 ];
 
-const EQUIPMENT = [
-  { name: "Novice Mortar & Pestle", multiplier: 1.0 },
-  { name: "Apprentice Mortar & Pestle", multiplier: 1.2 },
-  { name: "Journeyman Mortar & Pestle", multiplier: 1.4 },
-  { name: "Expert Mortar & Pestle", multiplier: 1.6 },
-  { name: "Master Mortar & Pestle", multiplier: 2.0 },
-  { name: "Novice Alembic", multiplier: 1.0 },
-  { name: "Apprentice Alembic", multiplier: 1.2 },
-  { name: "Journeyman Alembic", multiplier: 1.4 },
-  { name: "Expert Alembic", multiplier: 1.6 },
-  { name: "Master Alembic", multiplier: 2.0 },
-  { name: "Novice Calcinator", multiplier: 1.0 },
-  { name: "Apprentice Calcinator", multiplier: 1.2 },
-  { name: "Journeyman Calcinator", multiplier: 1.4 },
-  { name: "Expert Calcinator", multiplier: 1.6 },
-  { name: "Master Calcinator", multiplier: 2.0 },
-  { name: "Novice Retort", multiplier: 1.0 },
-  { name: "Apprentice Retort", multiplier: 1.2 },
-  { name: "Journeyman Retort", multiplier: 1.4 },
-  { name: "Expert Retort", multiplier: 1.6 },
-  { name: "Master Retort", multiplier: 2.0 }
-];
+const EQUIPMENT = {
+  "Mortar & Pestle": [
+    { name: "None", multiplier: 1.0 },
+    { name: "Novice Mortar & Pestle", multiplier: 1.0 },
+    { name: "Apprentice Mortar & Pestle", multiplier: 1.2 },
+    { name: "Journeyman Mortar & Pestle", multiplier: 1.4 },
+    { name: "Expert Mortar & Pestle", multiplier: 1.6 },
+    { name: "Master Mortar & Pestle", multiplier: 2.0 }
+  ],
+  "Alembic": [
+    { name: "None", multiplier: 1.0 },
+    { name: "Novice Alembic", multiplier: 1.0 },
+    { name: "Apprentice Alembic", multiplier: 1.2 },
+    { name: "Journeyman Alembic", multiplier: 1.4 },
+    { name: "Expert Alembic", multiplier: 1.6 },
+    { name: "Master Alembic", multiplier: 2.0 }
+  ],
+  "Calcinator": [
+    { name: "None", multiplier: 1.0 },
+    { name: "Novice Calcinator", multiplier: 1.0 },
+    { name: "Apprentice Calcinator", multiplier: 1.2 },
+    { name: "Journeyman Calcinator", multiplier: 1.4 },
+    { name: "Expert Calcinator", multiplier: 1.6 },
+    { name: "Master Calcinator", multiplier: 2.0 }
+  ],
+  "Retort": [
+    { name: "None", multiplier: 1.0 },
+    { name: "Novice Retort", multiplier: 1.0 },
+    { name: "Apprentice Retort", multiplier: 1.2 },
+    { name: "Journeyman Retort", multiplier: 1.4 },
+    { name: "Expert Retort", multiplier: 1.6 },
+    { name: "Master Retort", multiplier: 2.0 }
+  ]
+};
 
 export default function App() {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [alchemyLevel, setAlchemyLevel] = useState(25);
-  const [selectedEquipment, setSelectedEquipment] = useState([]);
+  const [selectedEquipment, setSelectedEquipment] = useState({
+    "Mortar & Pestle": EQUIPMENT["Mortar & Pestle"][0],
+    "Alembic": EQUIPMENT["Alembic"][0],
+    "Calcinator": EQUIPMENT["Calcinator"][0],
+    "Retort": EQUIPMENT["Retort"][0]
+  });
   const [sortBy, setSortBy] = useState('value');
   const [sortOrder, setSortOrder] = useState('desc');
 
@@ -136,19 +153,18 @@ export default function App() {
     );
   };
 
-  const toggleEquipment = (equipment) => {
-    setSelectedEquipment(prev => 
-      prev.includes(equipment) 
-        ? prev.filter(e => e !== equipment)
-        : [...prev, equipment]
-    );
+  const handleEquipmentChange = (category, equipment) => {
+    setSelectedEquipment(prev => ({
+      ...prev,
+      [category]: equipment
+    }));
   };
 
   const calculatePotions = useMemo(() => {
     if (selectedIngredients.length < 2) return [];
 
     const potions = [];
-    const equipmentMultiplier = selectedEquipment.reduce((acc, eq) => acc * eq.multiplier, 1);
+    const equipmentMultiplier = Object.values(selectedEquipment).reduce((acc, eq) => acc * eq.multiplier, 1);
     const skillMultiplier = 1 + (alchemyLevel / 100);
 
     // Generate all possible combinations of 2-4 ingredients
@@ -213,7 +229,12 @@ export default function App() {
 
   const clearAll = () => {
     setSelectedIngredients([]);
-    setSelectedEquipment([]);
+    setSelectedEquipment({
+      "Mortar & Pestle": EQUIPMENT["Mortar & Pestle"][0],
+      "Alembic": EQUIPMENT["Alembic"][0],
+      "Calcinator": EQUIPMENT["Calcinator"][0],
+      "Retort": EQUIPMENT["Retort"][0]
+    });
     setAlchemyLevel(25);
   };
 
@@ -244,16 +265,27 @@ export default function App() {
         </section>
 
         <section className="equipment-section">
-          <h2>Equipment ({selectedEquipment.length} selected)</h2>
-          <div className="equipment-grid">
-            {EQUIPMENT.map((equipment) => (
-              <button
-                key={equipment.name}
-                className={`equipment-item ${selectedEquipment.includes(equipment) ? 'selected' : ''}`}
-                onClick={() => toggleEquipment(equipment)}
-              >
-                {equipment.name} ({equipment.multiplier}x)
-              </button>
+          <h2>Equipment</h2>
+          <div className="equipment-dropdowns">
+            {Object.entries(EQUIPMENT).map(([category, items]) => (
+              <div key={category} className="equipment-dropdown">
+                <label htmlFor={category}>{category}:</label>
+                <select
+                  id={category}
+                  value={selectedEquipment[category].name}
+                  onChange={(e) => {
+                    const selected = items.find(item => item.name === e.target.value);
+                    handleEquipmentChange(category, selected);
+                  }}
+                  className="equipment-select"
+                >
+                  {items.map((item) => (
+                    <option key={item.name} value={item.name}>
+                      {item.name} ({item.multiplier}x)
+                    </option>
+                  ))}
+                </select>
+              </div>
             ))}
           </div>
         </section>
