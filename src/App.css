@@ -1,2 +1,292 @@
-main {
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 20px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+section {
+  border: 2px solid #000000;
+  padding: 20px;
+}
+
+section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 5px;
+}
+
+.character-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.alchemy-level {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.alchemy-level label {
+  font-weight: bold;
+}
+
+.alchemy-level input[type="range"] {
+  width: 100%;
+  height: 8px;
+  background: #000000;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.alchemy-level input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #000000;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.alchemy-level input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #000000;
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+}
+
+.clear-button {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.clear-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.equipment-grid,
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.equipment-item,
+.ingredient-item {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: inherit;
+}
+
+.equipment-item:hover,
+.ingredient-item:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.equipment-item.selected,
+.ingredient-item.selected {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sort-select {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.sort-select:focus {
+  outline: none;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.sort-order {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort-order:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.potions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.potion-item {
+  border: 1px solid #000000;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.potion-ingredients {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.potion-effects {
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.potion-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.potion-stats span {
+  padding: 2px 8px;
+  border: 1px solid #000000;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .equipment-grid,
+  .ingredients-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .character-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-controls {
+    justify-content: center;
+  }
+
+  .potion-stats {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* Scrollbar styling */
+.potions-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.potions-list::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 1px solid #000000;
+}
+
+.potions-list::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+.potions-list::-webkit-scrollbar-thumb:hover {
+  background: #333333;
 }
