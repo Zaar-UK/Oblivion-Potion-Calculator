@@ -504,6 +504,11 @@ section h2 {
   margin: 0;
 }
 
+.app-footer p::after {
+  content: " • Alchemy Calculator v1.0";
+  font-weight: bold;
+}
+
 /* Scrollbar styling */
 .potions-list::-webkit-scrollbar {
   width: 8px;
