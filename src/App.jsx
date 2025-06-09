@@ -160,6 +160,28 @@ export default function App() {
     }));
   };
 
+  const createPotion = (ingredients, equipmentMult, skillMult) => {
+    // Find common effects
+    const commonEffects = ingredients[0].effects.filter(effect =>
+      ingredients.every(ingredient => ingredient.effects.includes(effect))
+    );
+
+    if (commonEffects.length === 0) {
+      return { ingredients, effects: [], duration: 0, value: 0 };
+    }
+
+    const duration = Math.floor(30 * skillMult * equipmentMult);
+    const baseValue = commonEffects.length * 10 * ingredients.length;
+    const value = Math.floor(baseValue * skillMult * equipmentMult);
+
+    return {
+      ingredients,
+      effects: commonEffects,
+      duration,
+      value
+    };
+  };
+
   const calculatePotions = useMemo(() => {
     if (selectedIngredients.length < 2) return [];
 
@@ -204,28 +226,6 @@ export default function App() {
       }
     });
   }, [selectedIngredients, alchemyLevel, selectedEquipment, sortBy, sortOrder]);
-
-  const createPotion = (ingredients, equipmentMult, skillMult) => {
-    // Find common effects
-    const commonEffects = ingredients[0].effects.filter(effect =>
-      ingredients.every(ingredient => ingredient.effects.includes(effect))
-    );
-
-    if (commonEffects.length === 0) {
-      return { ingredients, effects: [], duration: 0, value: 0 };
-    }
-
-    const duration = Math.floor(30 * skillMult * equipmentMult);
-    const baseValue = commonEffects.length * 10 * ingredients.length;
-    const value = Math.floor(baseValue * skillMult * equipmentMult);
-
-    return {
-      ingredients,
-      effects: commonEffects,
-      duration,
-      value
-    };
-  };
 
   const clearAll = () => {
     setSelectedIngredients([]);
