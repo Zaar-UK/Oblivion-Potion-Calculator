@@ -261,7 +261,8 @@ export default function App() {
   return (
     <main className="app">
       <header className="app-header">
-        <h1>Oblivion Alchemy Calculator</h1>
+        <h1 className="app-title-main">OBLIVION</h1>
+        <h2 className="app-title-sub">Alchemy Calculator</h2>
         <p>Calculate potions based on your ingredients, skill level, and equipment</p>
       </header>
 
