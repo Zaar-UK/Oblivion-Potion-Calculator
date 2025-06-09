@@ -261,6 +261,7 @@ export default function App() {
   return (
     <main className="app">
       <header className="app-header">
+        <img src="/attached_assets/PlasmaKitten_ForWhiteBG_1749493854991.png" alt="Logo" className="app-logo" />
         <h1 className="app-title-main">OBLIVION</h1>
         <h2 className="app-title-sub">ALCHEMY CALCULATOR</h2>
         <p>Remastered Edition</p>
