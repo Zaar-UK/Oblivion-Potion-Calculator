@@ -26,14 +26,14 @@ body {
 }
 
 .app-title-main {
-  font-size: 3rem;
+  font-size: 48px;
   font-weight: 900;
   margin-bottom: 0px;
   letter-spacing: 2px;
 }
 
 .app-title-sub {
-  font-size: 1.8rem;
+  font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
 }
