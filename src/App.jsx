@@ -412,7 +412,9 @@ export default function App() {
       
       <footer className="app-footer">
         <div className="app-footer-content">
-          <img src="/attached_assets/PlasmaKitten_ForWhiteBG_1749493854991.png" alt="Logo" className="app-footer-logo" />
+          <a href="https://www.instagram.com/plasmakitty_?igsh=ejg1NDliaGRwb211" target="_blank" rel="noopener noreferrer">
+            <img src="/attached_assets/PlasmaKitten_ForWhiteBG_1749493854991.png" alt="Logo" className="app-footer-logo" />
+          </a>
           <p>Built for The Elder Scrolls IV: Oblivion Remastered • Alchemy Calculator v1.0</p>
         </div>
       </footer>
