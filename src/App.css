@@ -261,57 +261,41 @@ section h2 {
   color: #000000;
 }
 
-.potions-table-container {
+.potions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   max-height: 500px;
   overflow-y: auto;
-  border: 2px solid #000000;
 }
 
-.potions-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: inherit;
-}
-
-.potions-table th {
-  background-color: #000000;
-  color: #ffffff;
-  padding: 12px 8px;
-  text-align: left;
-  font-weight: bold;
-  border-bottom: 2px solid #000000;
-  position: sticky;
-  top: 0;
-}
-
-.potions-table td {
-  padding: 10px 8px;
-  border-bottom: 1px solid #000000;
-  vertical-align: top;
-}
-
-.potions-table tbody tr:hover {
-  background-color: #f8f8f8;
-}
-
-.potion-name {
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.potion-value {
-  font-weight: bold;
-  text-align: right;
-  white-space: nowrap;
+.potion-item {
+  border: 1px solid #000000;
+  padding: 15px;
+  background-color: #ffffff;
 }
 
 .potion-ingredients {
-  font-size: 0.9rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
 
 .potion-effects {
+  margin-bottom: 8px;
   font-style: italic;
+}
+
+.potion-stats {
+  display: flex;
+  gap: 20px;
   font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.potion-stats span {
+  padding: 2px 8px;
+  border: 1px solid #000000;
 }
 
 /* Responsive design */
@@ -346,30 +330,26 @@ section h2 {
     justify-content: center;
   }
 
-  .potions-table-container {
-    font-size: 0.8rem;
-  }
-  
-  .potions-table th,
-  .potions-table td {
-    padding: 8px 4px;
+  .potion-stats {
+    flex-direction: column;
+    gap: 5px;
   }
 }
 
 /* Scrollbar styling */
-.potions-table-container::-webkit-scrollbar {
+.potions-list::-webkit-scrollbar {
   width: 8px;
 }
 
-.potions-table-container::-webkit-scrollbar-track {
+.potions-list::-webkit-scrollbar-track {
   background: #ffffff;
   border: 1px solid #000000;
 }
 
-.potions-table-container::-webkit-scrollbar-thumb {
+.potions-list::-webkit-scrollbar-thumb {
   background: #000000;
 }
 
-.potions-table-container::-webkit-scrollbar-thumb:hover {
+.potions-list::-webkit-scrollbar-thumb:hover {
   background: #333333;
 }
