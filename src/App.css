@@ -155,7 +155,7 @@ section h2 {
 .equipment-select {
   background-color: #ffffff;
   color: #000000;
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   padding: 8px 12px;
   font-size: 0.9rem;
   cursor: pointer;
@@ -251,7 +251,7 @@ section h2 {
 .search-input {
   background-color: #ffffff;
   color: #000000;
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   padding: 8px 12px;
   font-size: 1rem;
   font-family: inherit;
@@ -278,7 +278,7 @@ section h2 {
 .sort-select {
   background-color: #ffffff;
   color: #000000;
-  border: 2px solid #000000;
+  border: 1px solid #000000;
   padding: 5px 10px;
   font-size: 1rem;
   cursor: pointer;
