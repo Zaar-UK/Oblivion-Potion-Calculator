@@ -262,7 +262,7 @@ export default function App() {
     <main className="app">
       <header className="app-header">
         <a href="https://www.instagram.com/plasmakitty_?igsh=ejg1NDliaGRwb211" target="_blank" rel="noopener noreferrer">
-          <img src="/logo.png" alt="Logo" className="app-logo" />
+          <img src="/test-logo.png" alt="Logo" className="app-logo" />
         </a>
         <h1 className="app-title-main">OBLIVION</h1>
         <h2 className="app-title-sub">ALCHEMY CALCULATOR</h2>
