@@ -28,7 +28,7 @@ body {
 .app-title-main {
   font-size: 48px;
   font-weight: 900;
-  margin-bottom: 0px;
+  margin-bottom: -5px;
   letter-spacing: 2px;
 }
 
